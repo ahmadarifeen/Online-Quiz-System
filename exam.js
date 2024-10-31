@@ -40,10 +40,20 @@ const questions = [
         image: "4.jpeg",
         additionalText: "A pulley is a simple machine. A system of pulleys is installed in a factory to allow a worker to lift heavy crates. If the worker exerts a force of 600 newtons (N) on the pulley system to lift a crate that weighs 1,800 N, what is the mechanical advantage of the pulley system?",
         options: ["A.18", "B.6", "C.3", "D.0.3"],
-        correct: "C.3"
+        correct: "C. Explnation "
     },
+
     { type: "dropdown", question: "Select the largest planet.", options: ["Earth", "Jupiter", "Mars"], correct: "Jupiter" },
-    { type: "fill", question: "Fill in: The color of the sky is ___", correct: "blue" }
+    { type: "fill", question: "Fill in: The color of the sky is ___", correct: "blue" },
+    {
+        type: "hotspot",
+        question: `
+            <strong>DIRECTIONS:</strong> Click on the area of the image that represents your answer.<br><br>
+        `,
+        image: "hotspot_image.jpeg", // Replace with your image file
+        correctCoordinates: { x: 150, y: 200 }, // Replace with the correct coordinates for the hotspot
+        additionalText: "Where is the hotspot area?"
+    }
 ];
 
 // Timer setup
@@ -126,7 +136,11 @@ function submitExam() {
         if (userAnswer?.toLowerCase() === q.correct.toLowerCase()) {
             score++;
         } else {
-            mistakes.push({ question: q.question, correctAnswer: q.correct, userAnswer });
+            mistakes.push({
+                questionNumber: index + 1, // Store question number
+                correctAnswer: q.correct,
+                userAnswer
+            });
         }
     });
 
@@ -148,7 +162,7 @@ function displayMistakes(mistakes) {
     mistakesList.innerHTML = "";
     mistakes.forEach(mistake => {
         const mistakeItem = document.createElement("li");
-        mistakeItem.textContent = `Q: ${mistake.question} | Correct: ${mistake.correctAnswer} | Your Answer: ${mistake.userAnswer || "No answer"}`;
+        mistakeItem.textContent = `Q${mistake.questionNumber}: Correct: ${mistake.correctAnswer} | Your Answer: ${mistake.userAnswer || "No answer"}`;
         mistakesList.appendChild(mistakeItem);
     });
 }
