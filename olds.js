@@ -1,4 +1,4 @@
-// Sample questions array with MCQs, dropdowns, fill-in-the-blank questions, and drag-and-drop
+// Sample questions array with MCQs, dropdowns, and fill-in-the-blank questions
 const questions = [
     {
         type: "mcq",
@@ -17,6 +17,7 @@ const questions = [
         options: ["A. The number of neutrons is variable.", "B. The number of protons is variable", "C. The mass of electrons is variable", "D. The mass of protons is variable."],
         correct: "A. The number of neutrons is variable."
     },
+
     {
         type: "mcq",
         question: `
@@ -87,19 +88,8 @@ Alisha is conducting an investigation with two unlabeled powders. She is certain
         options: ["A. Thermal energy is transferred from warmer parts of a solid to cooler parts of a solid. ", "B.  Thermal energy is transferred from warmer parts of a metal object to cooler parts of a metal object.", "C. Copper is a better conductor than other metals.", "D. Bringing about energy transfer by radiation is an effective method for melting objects."],
         correct: "B.  Thermal energy is transferred from warmer parts of a metal object to cooler parts of a metal object."
     },
-    {
-        type: "mcq",
-        question: "Which chemical equation represents the reaction described?",
-        options: ["A. I<sub>2</sub> + N<sub>2</sub> + O<sub>2</sub> → 2NI<sub>3</sub><br>", "B. N<sub>2</sub> + 3I<sub>2</sub> → 2NI<sub>3</sub><br>", "C. NI<sub>3</sub> → N<sub>2</sub> + I<sub>2</sub> + O<sub>2</sub><br>", "D. 2NI<sub>3</sub> → N<sub>2</sub> + 3I<sub>2</sub>"],
-        correct: "D. 2NI<sub>3</sub> → N<sub>2</sub> + 3I<sub>2</sub>"
-    },
-    {
-        type: "mcq",
-        question: "Which type of reaction is described?",
-        options: ["A. decomposition", "B. synthesis", "C. single displacement", "D. double displacement"],
-        correct: "A. decomposition"
-    },
 
+    { type: "dropdown", question: "Select the largest planet.", options: ["Earth", "Jupiter", "Mars"], correct: "Jupiter" },
     { type: "fill", question: " <strong>DIRECTIONS:</strong> Read the passage for answering <b> question 17 to 19</b> <br> <br> If the velocity of an object is increasing, its acceleration is positive. If its velocity is decreasing, its acceleration is negative. Negative acceleration is also called deceleration. For example, when a car's brakes are applied, the car decelerates. The calculation for deceleration is the same as that for acceleration: Subtract the initial velocity from the final velocity and divide that number by time. If the object's velocity is constant, its acceleration is zero.", additionalText: "The velocity of a car changes from 5 meters per second (m/s) to 35 m/s in 5 seconds (s). What is the car's acceleration?", correct: "6" },
     { type: "fill", question: "A car going 20 m/s takes 10 s to come to a complete stop. What is the car's deceleration?", correct: "-2" },
     { type: "fill", question: "A car is moving at a constant velocity of 20 m/s for 60 s. What is its acceleration over that period of time?", correct: "0" },
@@ -108,33 +98,15 @@ Alisha is conducting an investigation with two unlabeled powders. She is certain
     { type: "dropdown", question: " As it descends toward Point B, the energy of the car is", options: ["being lost to momentum", "changing from kinetic energy to potential energy", "being changed to gravitational energy", "changing from potential energy to kinetic energy"], correct: "changing from potential energy to kinetic energy" },
     { type: "dropdown", question: " The car has the least potential energy and the most kinetic energy at Point", options: ["A", "B", "C", "D"], correct: "C" },
     {
-        type: "drag-drop",
-        question: "<strong>DIRECTIONS:</strong> Read the passage and Question, and then use the drag-and-drop options to complete the table.<br> Thermal energy is a form of kinetic energy...",
-        additionalText: "Determine whether each <b>drag-and-drop</b> option describes a condition...",
-        options: [
-            { id: "opt1", text: "Particles speed up" },
-            { id: "opt2", text: "Temperature drops" },
-            { id: "opt3", text: "Energy is transferred in" },
-            { id: "opt4", text: "Volume is increased" },
-            { id: "opt5", text: "Particle slows down" },
-            { id: "opt6", text: "Energy is transferred out" },
-            { id: "opt7", text: "Volume is reduced" },
-            { id: "opt8", text: "Temperature is increased" }
-        ],
-        correct: {
-            increase: ["opt1", "opt3", "opt4", "opt8"],
-            decrease: ["opt2", "opt5", "opt6", "opt7"]
-        }
-    },
-
-    {
         type: "mcq",
-        question: "Why is atomic mass an average?",
-        options: ["A. The number of neutrons is variable.", "B. The number of protons is variable", "C. The mass of electrons is variable", "D. The mass of protons is variable."],
-        correct: "A. The number of neutrons is variable."
+        question: "<strong>DIRECTIONS:</strong> Read the passage and Question, and then use the  <b>drag-and-drop</b>options to complete the table<br> Thermal energy is a form of kinetic energy that results from events that happen at a scale we cannot see. As energy is transferred from system to system or from object to object, the motion of the particles that make up the object or system speed up or slow down, depending on whether energy is being transferred in or out. The average kinetic energy of all the particles in a substance can be measured as temperature by using a thermometer. The total kinetic energy of an object or system is greater if more particles are present. That is, at the same temperature, a 100 ml sample of water has more kinetic energy than a 50 ml sample of water.",
+        additionalText: "Determine whether each drag-and-drop option describes a condition that relates to an increase or a decrease in the kinetic energy of an object or a system. Then record each description in the correct column of the table.",
+        options: ["A. Thermal energy is transferred from warmer parts of a solid to cooler parts of a solid. ", "B.  Thermal energy is transferred from warmer parts of a metal object to cooler parts of a metal object.", "C. Copper is a better conductor than other metals.", "D. Bringing about energy transfer by radiation is an effective method for melting objects."],
+        correct: "B.  Thermal energy is transferred from warmer parts of a metal object to cooler parts of a metal object."
     },
 
 ];
+
 // Timer setup
 let timeRemaining = 5400; // 90 minutes in seconds
 const timerElement = document.getElementById("time-remaining");
@@ -159,25 +131,47 @@ const questionsContainer = document.getElementById("questions-container");
 questions.forEach((q, index) => {
     const questionDiv = document.createElement("div");
     questionDiv.className = "question";
-    questionDiv.style.padding = "10px";
-    questionDiv.style.marginBottom = "20px";
+    questionDiv.style.padding = "10px"; // Add padding between questions
+    questionDiv.style.marginBottom = "20px"; // Space between questions
 
+    // Create and add question text
     questionDiv.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
 
+    // Add image if it exists
     if (q.image) {
         const img = document.createElement("img");
         img.src = q.image;
         img.alt = "Question Image";
-        img.style.width = "300px";
+        img.style.width = "300px"; // Set desired width
+        img.style.height = "auto"; // Keep aspect ratio
+
+        if (q.image === "5.jpeg") {
+            img.style.width = "400px"; // Set desired width
+            img.style.height = "300px"; // Set desired height
+        } else {
+            img.style.width = "300px"; // Default width for other images
+            img.style.height = "auto";  // Maintain aspect ratio
+        }
+
+        if (q.image === "22.jpeg") {
+            img.style.width = "400px"; // Set desired width
+            img.style.height = "300px"; // Set desired height
+        } else {
+            img.style.width = "300px"; // Default width for other images
+            img.style.height = "auto";  // Maintain aspect ratio
+        }
+
+
         questionDiv.appendChild(img);
     }
+
 
     if (q.additionalText) {
         const additionalText = document.createElement("p");
         additionalText.innerHTML = q.additionalText;
         questionDiv.appendChild(additionalText);
     }
-
+    // Display options based on question type
     if (q.type === "mcq") {
         q.options.forEach(option => {
             questionDiv.innerHTML += `<div><input type="radio" name="q${index}" value="${option}"> ${option}</div>`;
@@ -194,48 +188,6 @@ questions.forEach((q, index) => {
         questionDiv.appendChild(select);
     } else if (q.type === "fill") {
         questionDiv.innerHTML += `<input type="text" name="q${index}" placeholder="Type answer here">`;
-    } else if (q.type === "drag-drop") {
-        // Add drag-and-drop options and drop zones within the question
-        const dragDropContainer = document.createElement("div");
-        dragDropContainer.className = "drag-drop-container";
-
-        const dragOptionsDiv = document.createElement("div");
-        dragOptionsDiv.id = `drag-options-${index}`;
-        dragOptionsDiv.className = "drag-options";
-        q.options.forEach(option => {
-            const optionDiv = document.createElement("div");
-            optionDiv.className = "drag-item";
-            optionDiv.id = option.id;
-            optionDiv.draggable = true;
-            optionDiv.textContent = option.text;
-            optionDiv.ondragstart = drag;
-            dragOptionsDiv.appendChild(optionDiv);
-        });
-        dragDropContainer.appendChild(dragOptionsDiv);
-
-        // Add table for drag and drop targets
-        const tableContainer = document.createElement("div");
-        tableContainer.className = "table-container";
-        const tableHTML = `
-            <table class="drag-drop-table">
-                <thead>
-                    <tr>
-                        <th>Increase in Kinetic Energy</th>
-                        <th>Decrease in Kinetic Energy</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="increase-${index}" class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                        <td id="decrease-${index}" class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
-                    </tr>
-                </tbody>
-            </table>
-        `;
-        tableContainer.innerHTML = tableHTML;
-        dragDropContainer.appendChild(tableContainer);
-
-        questionDiv.appendChild(dragDropContainer);
     }
 
     questionsContainer.appendChild(questionDiv);
@@ -248,46 +200,24 @@ function submitExam() {
     const mistakes = [];
 
     questions.forEach((q, index) => {
-        let userAnswer;
+        const userAnswer = document.querySelector(`[name="q${index}"]:checked`)?.value ||
+            document.querySelector(`[name="q${index}"]`)?.value;
 
-        if (q.type === "drag-drop") {
-            const increaseZone = document.getElementById(`increase-${index}`).children;
-            const decreaseZone = document.getElementById(`decrease-${index}`).children;
-            const increaseIds = Array.from(increaseZone).map(el => el.id);
-            const decreaseIds = Array.from(decreaseZone).map(el => el.id);
-
-            if (JSON.stringify(increaseIds.sort()) === JSON.stringify(q.correct.increase.sort()) &&
-                JSON.stringify(decreaseIds.sort()) === JSON.stringify(q.correct.decrease.sort())) {
-                score++;
-            } else {
-                mistakes.push({
-                    questionNumber: index + 1,
-                    correctAnswer: 'Correct increase options: ' + q.correct.increase.join(', ') +
-                        ', Correct decrease options: ' + q.correct.decrease.join(', '),
-                    userAnswer: 'Your increase options: ' + increaseIds.join(', ') +
-                        ', Your decrease options: ' + decreaseIds.join(', ')
-                });
-            }
+        if (userAnswer?.toLowerCase() === q.correct.toLowerCase()) {
+            score++;
         } else {
-            userAnswer = document.querySelector(`[name="q${index}"]:checked`)?.value ||
-                document.querySelector(`[name="q${index}"]`)?.value;
-
-            if (userAnswer?.toLowerCase() === q.correct.toLowerCase()) {
-                score++;
-            } else {
-                mistakes.push({
-                    questionNumber: index + 1,
-                    correctAnswer: q.correct,
-                    userAnswer
-                });
-            }
+            mistakes.push({
+                questionNumber: index + 1, // Store question number
+                correctAnswer: q.correct,
+                userAnswer
+            });
         }
     });
 
     // Calculate raw score
     const totalQuestions = questions.length;
-    const rawPercentage = (score / totalQuestions) * 100;
-    const gedScore = 100 + rawPercentage;
+    const rawPercentage = (score / totalQuestions) * 100; // Example: 3/8 * 100 = 37.5
+    const gedScore = 100 + rawPercentage; // Example: 100 + 37.5 = 137.5
 
     // Display scores
     document.getElementById("score").textContent = `${score} / ${totalQuestions}`;
@@ -319,20 +249,3 @@ function showMistakes() {
     document.getElementById("mistakes").style.display = "block";
 }
 
-// Enable the drop target
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-// Handle the drag event
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-// Handle the drop event
-function drop(ev) {
-    ev.preventDefault();
-    const data = ev.dataTransfer.getData("text");
-    const draggableElement = document.getElementById(data);
-    ev.target.appendChild(draggableElement);
-}
