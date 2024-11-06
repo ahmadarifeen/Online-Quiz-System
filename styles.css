@@ -11,11 +11,15 @@
     /* Rounds the corners of the container */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     /* Adds a subtle shadow effect to create depth */
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 .btn-submit {
     background-color: #004f9f;
     color: white;
+    width: 100px;
+
 }
 
 .timer {
@@ -94,14 +98,42 @@ main {
     background-color: white;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+@media (max-width: 768px) {
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .header-content {
+        padding: 0 15px;
+        /* Reduce padding for mobile */
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .question-container,
+    main {
+        padding: 15px;
+        margin: 10px auto;
+        width: 95%;
+        /* Allow more width for mobile */
+        margin-bottom: 20px;
+
+    }
+}
+
+#my-image,
+.drag-drop-table {
+    max-width: 100%;
+    height: auto;
 }
 
 
-
-/* Question Container Styling */
-.question-container {
-    margin-bottom: 20px;
-}
 
 .button-container {
     display: flex;
@@ -150,6 +182,7 @@ main {
 
 /* Result Display Styling */
 .result {
+
     text-align: center;
     /* Center text alignment */
     margin-top: 20px;
@@ -324,4 +357,22 @@ td.drop-zone {
     padding: 10px;
     background-color: #f0f0f0;
     font-weight: bold;
+}
+
+.mistake-highlight {
+    background-color: rgba(255, 0, 0, 0.1);
+    /* Light red background to highlight */
+    border-left: 5px solid red;
+    /* A red border to make it stand out */
+}
+
+.explanation {
+    font-size: 0.9em;
+    margin-top: 5px;
+    color: #d9534f;
+    /* red color for explanation */
+}
+
+#show-mistakes-btn {
+    display: none;
 }
